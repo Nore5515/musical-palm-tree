@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
 export default function App() {
-  const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(10);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((seconds) => seconds + 1);
+    let interval = setInterval(() => {
+      console.log("tick");
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
     }, 1000);
-
     return () => clearInterval(interval);
-  }, []);
+  }, [seconds]);
 
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: 50 }}>{seconds}</Text>
+      <Button title="Reset" onPress={() => setSeconds(10)}></Button>
     </View>
   );
 }
