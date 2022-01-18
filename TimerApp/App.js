@@ -18,6 +18,7 @@ export default function App() {
     <View style={styles.container}>
       <Text style={{fontSize: 50}}>{seconds}</Text>
       <Button title="Reset" onPress={() => setSeconds(10)}></Button>
+      <Text>Good luck!</Text>
     </View>
   );
 }
